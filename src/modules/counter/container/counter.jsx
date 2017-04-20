@@ -7,19 +7,7 @@ import { increment, decrement } from '../actions/counter'
 
 import './counter.scss'
 
-const mapStateToProps = state =>
-({
-    counter: state.counter
-})
-
-const mapDispatchToProps = dispatch =>
-({
-    increment: bindActionCreators(increment, dispatch),
-    decrement: bindActionCreators(decrement, dispatch)
-})
-
-@connect(mapStateToProps, mapDispatchToProps)
-export default class Counter extends Component {
+class Counter extends Component {
     static propTypes = {
         counter: PropTypes.object.isRequired,
         increment: PropTypes.func.isRequired,
@@ -46,3 +34,16 @@ export default class Counter extends Component {
         )
     }
 }
+
+const mapStateToProps = state =>
+({
+    counter: state.counter
+})
+
+const mapDispatchToProps = dispatch =>
+({
+    increment: bindActionCreators(increment, dispatch),
+    decrement: bindActionCreators(decrement, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter)
