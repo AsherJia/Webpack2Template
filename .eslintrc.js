@@ -1,18 +1,28 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es6": true
+    'env': {
+        'browser': true,
+        'es6': true
     },
-    "extends": "airbnb",
-    "plugins": [
-        "react"
+    'extends': 'airbnb',
+    'plugins': [
+        'react'
     ],
-    "rules": {
+    'parserOptions': {
+        'ecmaFeatures': {
+            'jsx': true,
+            'modules': true
+        }
+    },
+    'parser': 'babel-eslint',
+    'rules': {
         'semi': 0,
-        'indent': ['error', 4],
+        'indent': ['error', 4, { 'SwitchCase': 1 }],
         'comma-dangle': 0,
-        'jsx-quotes':["error", "prefer-single"],
+        'jsx-quotes':['error', 'prefer-single'],
+        'global-require': 0,
+        'react/forbid-prop-types': 0
+        'react/jsx-indent-props': [2, 4],
         'react/jsx-indent': ['error', 4],
-        "react/prefer-stateless-function": [0]
-    }
+        'react/prefer-stateless-function': [0],
+    },
 };

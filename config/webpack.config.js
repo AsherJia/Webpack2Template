@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack')
 
 module.exports = {
-    entry: path.resolve(__dirname, '../src/index.jsx'),
+    entry: ['babel-polyfill', path.resolve(__dirname, '../src/provider.jsx')],
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'bundle.js',
@@ -14,11 +14,12 @@ module.exports = {
                 test: /\.(js|jsx)?$/,
                 exclude: /node_modules/,
                 use: [{
-                    loader: 'react-hot-loader'
+                    loader: 'react-hot-loader/webpack'
                 }, {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['es2015', 'react', 'stage-2']
+                        presets: ['es2015', 'react', 'stage-2'],
+                        plugins: ['react-hot-loader/babel', 'transform-decorators-legacy']
                     }
                 }]
             }, {
@@ -33,7 +34,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.js', '.json', '.jsx', '.css', '.html'],
+        extensions: ['.js', '.json', '.jsx', '.scss', '.html'],
     },
     devtool: 'source-map',
     devServer: {
