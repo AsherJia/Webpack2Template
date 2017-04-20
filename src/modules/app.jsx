@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 
-class App extends Component {
+import './app.scss'
+
+export default class App extends Component {
     render() {
         return (
-            <div>
-                <h1>Hello World~~</h1>
-            </div>
+            <h1 className='fontColor'>Hello World~~~~~~~</h1>
         )
     }
 }
-
-export default App
