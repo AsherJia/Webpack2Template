@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux'
 
 import { increment, decrement } from '../actions/counter'
 
+import './counter.scss'
+
 const mapStateToProps = state =>
 ({
     counter: state.counter
@@ -36,7 +38,7 @@ export default class Counter extends Component {
             <div>
                 <button onClick={this.props.increment}>increment</button>
                 <button onClick={this.props.decrement}>decrement</button>
-                <div>
+                <div className='fontColor'>
                     Counter:
                     <span>{ number }</span>
                 </div>

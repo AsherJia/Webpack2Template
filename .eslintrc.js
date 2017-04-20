@@ -20,7 +20,7 @@ module.exports = {
         'comma-dangle': 0,
         'jsx-quotes':['error', 'prefer-single'],
         'global-require': 0,
-        'react/forbid-prop-types': 0
+        'react/forbid-prop-types': 0,
         'react/jsx-indent-props': [2, 4],
         'react/jsx-indent': ['error', 4],
         'react/prefer-stateless-function': [0],

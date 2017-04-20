@@ -1,30 +1,39 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { AppContainer } from 'react-hot-loader'
+// import { AppContainer } from 'react-hot-loader'
+import { Router, browserHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+import 'react-hot-loader/patch'
 
-// import App from './modules/app/container/app'
-import Counter from './modules/counter/container/counter'
 import store from './store'
+import Counter from './modules/counter/container/counter'
+
+console.log('browserHistory', browserHistory)
+const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
     <Provider store={store}>
-        <Counter />
+        <Router history={history}>
+            <Route path='/' component={Counter} />
+        </Router>
     </Provider>,
     document.getElementById('root')
 )
-
+/*
 if (module.hot) {
-    module.hot.accept('./modules/counter/container/counter', () => {
-        const NextApp = require('./modules/counter/container/counter').default
+    module.hot.accept('./router', () => {
+        const NextRouter = require('./router').default
 
         ReactDOM.render(
             <Provider store={store}>
                 <AppContainer>
-                    <NextApp />
+                    <Router history={history}>
+                        { NextRouter }
+                    </Router>
                 </AppContainer>
             </Provider>,
             document.getElementById('root')
         )
     })
-}
+}*/
