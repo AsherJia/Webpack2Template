@@ -1,7 +1,8 @@
-import { INCREMENT, DESCREMENT, AUTO_INCREMENT } from '../constants/actionType'
+import { INCREMENT, DESCREMENT, SET_AUTOINTERVAL } from '../constants/actionType'
 
 const initCounter = {
-    number: 0
+    number: 0,
+    autoInterval: undefined
 }
 
 export default (state = initCounter, action = {}) => {
@@ -16,10 +17,10 @@ export default (state = initCounter, action = {}) => {
                 ...state,
                 number: state.number - 1
             }
-        case AUTO_INCREMENT:
+        case SET_AUTOINTERVAL:
             return {
                 ...state,
-                number: state.number + 2
+                autoInterval: action.autoInterval
             }
         default:
             return state

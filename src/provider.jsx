@@ -2,33 +2,24 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import 'react-hot-loader/patch'
-import { Route } from 'react-router'
 import { ConnectedRouter } from 'react-router-redux'
-import {
-  Link
-} from 'react-router-dom'
+import { AppContainer } from 'react-hot-loader'
+
 import configureStore, { history } from './store'
-import Counter from './modules/counter/container/counter'
-import Todo from './modules/todos/container/todo'
+
+import Router from './router'
 
 const store = configureStore()
 
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <div>
-                <ul>
-                    <li><Link to='/todo'>todo</Link></li>
-                    <li><Link to='/'>Home</Link></li>
-                </ul>
-                <Route path='/' component={Counter} />
-                <Route path='/todo' component={Todo} />
-            </div>
+            <Router />
         </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
 )
-/*
+
 if (module.hot) {
     module.hot.accept('./router', () => {
         const NextRouter = require('./router').default
@@ -36,12 +27,12 @@ if (module.hot) {
         ReactDOM.render(
             <Provider store={store}>
                 <AppContainer>
-                    <Router history={history}>
-                        { NextRouter }
-                    </Router>
+                    <ConnectedRouter history={history}>
+                        <NextRouter />
+                    </ConnectedRouter>
                 </AppContainer>
             </Provider>,
             document.getElementById('root')
         )
     })
-}*/
+}
