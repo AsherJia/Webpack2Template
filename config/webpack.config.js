@@ -38,6 +38,7 @@ module.exports = {
     },
     devtool: 'source-map',
     devServer: {
+        historyApiFallback: true,
         contentBase: path.join(__dirname, '../dist'),
         compress: true, // enable gzip compression
         port: 9000,

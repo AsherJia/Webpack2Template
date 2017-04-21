@@ -12,7 +12,6 @@ import Counter from './modules/counter/container/counter'
 import Todo from './modules/todos/container/todo'
 
 const store = configureStore()
-console.log('history ', history)
 
 ReactDOM.render(
     <Provider store={store}>
